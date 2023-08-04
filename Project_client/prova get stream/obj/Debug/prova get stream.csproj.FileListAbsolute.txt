@@ -1,0 +1,3 @@
+C:\code\ixla\test\Project\Project_client\prova get stream\obj\Debug\prova get stream.csproj.AssemblyReference.cache
+C:\code\ixla\test\Project\Project_client\prova get stream\obj\Debug\prova get stream.csproj.SuggestedBindingRedirects.cache
+C:\code\ixla\test\Project\Project_client\prova get stream\obj\Debug\prova get stream.csproj.CoreCompileInputs.cache

@@ -1,0 +1,7 @@
+C:\code\ixla\test\Project\Project_client\prova_streamreader\bin\Debug\prova_streamreader.exe
+C:\code\ixla\test\Project\Project_client\prova_streamreader\bin\Debug\prova_streamreader.pdb
+C:\code\ixla\test\Project\Project_client\prova_streamreader\obj\Debug\prova_streamreader.csproj.AssemblyReference.cache
+C:\code\ixla\test\Project\Project_client\prova_streamreader\obj\Debug\prova_streamreader.csproj.SuggestedBindingRedirects.cache
+C:\code\ixla\test\Project\Project_client\prova_streamreader\obj\Debug\prova_streamreader.csproj.CoreCompileInputs.cache
+C:\code\ixla\test\Project\Project_client\prova_streamreader\obj\Debug\prova_streamreader.exe
+C:\code\ixla\test\Project\Project_client\prova_streamreader\obj\Debug\prova_streamreader.pdb

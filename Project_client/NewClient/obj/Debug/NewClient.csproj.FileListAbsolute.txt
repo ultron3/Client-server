@@ -1,0 +1,7 @@
+C:\code\ixla\test\Project\Project_client\NewClient\bin\Debug\NewClient.exe
+C:\code\ixla\test\Project\Project_client\NewClient\bin\Debug\NewClient.pdb
+C:\code\ixla\test\Project\Project_client\NewClient\obj\Debug\NewClient.csproj.AssemblyReference.cache
+C:\code\ixla\test\Project\Project_client\NewClient\obj\Debug\NewClient.csproj.SuggestedBindingRedirects.cache
+C:\code\ixla\test\Project\Project_client\NewClient\obj\Debug\NewClient.csproj.CoreCompileInputs.cache
+C:\code\ixla\test\Project\Project_client\NewClient\obj\Debug\NewClient.exe
+C:\code\ixla\test\Project\Project_client\NewClient\obj\Debug\NewClient.pdb
