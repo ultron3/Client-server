@@ -28,6 +28,8 @@ namespace Project_server
                 TcpClient client = listener.AcceptTcpClient();
                 clients.Add(client);
                 NetworkStream stream = client.GetStream();
+                StreamWriter writer = new StreamWriter(stream);
+                writers.Add(writer);// Aggiungi il writer del client alla lista
 
                 Console.WriteLine("New client connected.");
 

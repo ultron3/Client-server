@@ -5,3 +5,5 @@ C:\code\ixla\test\Project\Project_client\Project_server\obj\Debug\Project_server
 C:\code\ixla\test\Project\Project_client\Project_server\obj\Debug\Project_server.csproj.CoreCompileInputs.cache
 C:\code\ixla\test\Project\Project_client\Project_server\obj\Debug\Project_server.exe
 C:\code\ixla\test\Project\Project_client\Project_server\obj\Debug\Project_server.pdb
+C:\Users\IdeaPad\OneDrive\Documenti\GitHub\Client-server\Project_client\Project_server\obj\Debug\Project_server.exe
+C:\Users\IdeaPad\OneDrive\Documenti\GitHub\Client-server\Project_client\Project_server\obj\Debug\Project_server.pdb
