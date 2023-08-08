@@ -6,70 +6,80 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project_server
+using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading;
+
+public class Server
 {
-    internal class Program
+    private TcpListener listener;
+    private List<NetworkStream> clientStreams;
+
+    public Server(int port)
     {
-        public static async Task Main(string[] args)
+        listener = new TcpListener(IPAddress.Any, port);
+        clientStreams = new List<NetworkStream>();
+    }
+
+    public void Start()
+    {
+        listener.Start();
+        Console.WriteLine("Server started. Waiting for clients...");
+
+        while (true)
         {
-          
-             
-            string serverIP = "192.168.3.232";
-            int serverPort = 5555;
+            TcpClient client = listener.AcceptTcpClient();
+            Console.WriteLine("Client connected.");
 
-            TcpListener listener = new TcpListener(IPAddress.Parse(serverIP), serverPort);
-            listener.Start();
-            Console.WriteLine("Server started. Waiting for incoming connections...");
+            NetworkStream clientStream = client.GetStream();
+            clientStreams.Add(clientStream);
 
-            List<TcpClient> clients = new List<TcpClient>();
+            Thread clientThread = new Thread(() => HandleClient(clientStream));
+            clientThread.Start();
+        }
+    }
 
-            while (true)
+    private void HandleClient(NetworkStream clientStream)
+    {
+        try
+        {
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+
+            while ((bytesRead = clientStream.Read(buffer, 0, buffer.Length)) > 0)
             {
-                TcpClient client = listener.AcceptTcpClient();
-                clients.Add(client);
-                NetworkStream stream = client.GetStream();
-                StreamWriter writer = new StreamWriter(stream);
-                writers.Add(writer);// Aggiungi il writer del client alla lista
+                string message = Encoding.ASCII.GetString(buffer, 0, bytesRead);
+                Console.WriteLine("Received message: " + message);
 
-                Console.WriteLine("New client connected.");
-
-                while (true)
+                // Inoltra il messaggio a tutti gli altri client
+                foreach (var stream in clientStreams)
                 {
-                    byte[] receiveData = new byte[1024];
-                    int bytesRead = stream.Read(receiveData, 0, receiveData.Length);
-                    string clientMessage = Encoding.ASCII.GetString(receiveData, 0, bytesRead);
-
-                    Console.WriteLine($"Message received from client: {clientMessage}");
-
-                    if (clientMessage.ToLower() == "exit")
+                    if (stream != clientStream)
                     {
-                        clients.Remove(client);
-                        client.Close();
-                        break; 
-                    }
-
-                    byte[] sendData = Encoding.ASCII.GetBytes(clientMessage);
-
-                    foreach (TcpClient otherClient in clients)
-                    {
-                        if (otherClient != client)
-                        {
-                            otherClient.GetStream().Write(sendData, 0, sendData.Length);
-                            Console.WriteLine("Message sent to the other client");
-                        }
+                        byte[] sendData = Encoding.ASCII.GetBytes(message);
+                        stream.Write(sendData, 0, sendData.Length);
                     }
                 }
             }
-
-            listener.Stop();
-            Console.WriteLine("Server stopped.");
-               
-
-          
         }
+        catch (Exception ex)
+        {
+            Console.WriteLine("An error occurred: " + ex.Message);
+        }
+        finally
+        {
+            clientStreams.Remove(clientStream);
+            clientStream.Close();
+        }
+    }
 
-
-        
+    public static void Main(string[] args)
+    {
+        Server server = new Server(5555);
+        server.Start();
     }
 }
 
